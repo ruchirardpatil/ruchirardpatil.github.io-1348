@@ -1,0 +1,60 @@
+{
+  "_instructions": "Add your work experience here. Copy the experience object for each job.",
+  "sectionTitle": "Professional Experience",
+  "experiences": [
+    {
+      "title": "Software Development Engineer",
+      "company": "Amazon",
+      "period": "Mar 2025 - Apr 2026",
+      "location": "",
+      "description": "Developed features in the Appeals domain on the PXT Departures team, improving workflows by 30%. Led migration of 5K+ intervention cases to PXT-CMS and collaborated with 5+ teams to deliver scalable solutions. Provided on-call support, resolving 95% of incidents within SLA, and automated processes to cut manual work by 20%.",
+      "responsibilities": [
+        "Developed features in the Appeals domain on the PXT Departures team, improving workflows by 30%",
+        "Led migration of 5K+ intervention cases to PXT-CMS and collaborated with 5+ teams to deliver scalable solutions",
+        "Provided on-call support, resolving 95% of incidents within SLA, and automated processes to cut manual work by 20%"
+      ]
+    },
+    {
+      "title": "Software Engineer Intern",
+      "company": "Oracle",
+      "period": "May 2024 - Aug 2024",
+      "location": "",
+      "description": "Consolidated 15+ loggers by merging similar functionalities to enhance overall system efficiency. Developed 40+ comprehensive and actionable product metrics using SQL queries for the SuiteCloud Development Framework to support advanced data analysis and decision-making, and built dynamic, interactive dashboards by applying OpenSearch to visualize key metrics.",
+      "responsibilities": [
+        "Consolidated 15+ loggers by merging similar functionalities to enhance overall system efficiency",
+        "Developed 40+ comprehensive and actionable product metrics using SQL queries for the SuiteCloud Development Framework to support advanced data analysis and decision-making, and built dynamic, interactive dashboards by applying OpenSearch to visualize key metrics"
+      ]
+    },
+    {
+      "title": "STEM Researcher",
+      "company": "USC Viterbi",
+      "period": "Apr 2023 - Aug 2023",
+      "location": "",
+      "description": "Led an NSF-funded project, developing user-centered assistive technologies to benefit 500+ disabled individuals. Created an accessible website, increasing digital inclusivity for disabled individuals by 35%.",
+      "responsibilities": [
+        "Led an NSF-funded project, developing user-centered assistive technologies to benefit 500+ disabled individuals",
+        "Created an accessible website, increasing digital inclusivity for disabled individuals by 35%"
+      ]
+    },
+    {
+      "title": "Data Science Intern",
+      "company": "Applus IDIADA",
+      "period": "Jan 2022 - Jun 2022",
+      "location": "",
+      "description": "Applied ML techniques to preprocess crash simulation data, improving material selection efficiency by 60%, reducing deformation by 25%, and enhancing vehicle safety by 20% through cross-functional collaboration.",
+      "responsibilities": [
+        "Applied ML techniques to preprocess crash simulation data, improving material selection efficiency by 60%, reducing deformation by 25%, and enhancing vehicle safety by 20% through cross-functional collaboration"
+      ]
+    },
+    {
+      "title": "Software Developer Intern",
+      "company": "Salahkaar Consultants",
+      "period": "Mar 2021 - Jun 2021",
+      "location": "",
+      "description": "Built a user-friendly performance analysis portal that streamlined task management, improved cross-team communication by 40%, and supported ratings for 200+ tasks monthly.",
+      "responsibilities": [
+        "Built a user-friendly performance analysis portal that streamlined task management, improved cross-team communication by 40%, and supported ratings for 200+ tasks monthly"
+      ]
+    }
+  ]
+}

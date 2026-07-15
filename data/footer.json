@@ -1,0 +1,35 @@
+{
+  "_instructions": "Footer section.",
+  "copyright": {
+    "text": "© 2026 Ruchira Dayanand Patil. All rights reserved.",
+    "year": "2026",
+    "name": "Ruchira Dayanand Patil"
+  },
+  "tagline": "Crafted with passion and dedication",
+  "links": [
+    {
+      "text": "Privacy Policy",
+      "href": "#privacy"
+    },
+    {
+      "text": "Terms of Service",
+      "href": "#terms"
+    }
+  ],
+  "socialLinks": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ruchira-patil-1662181b8",
+      "icon": "fab fa-linkedin"
+    },
+    {
+      "platform": "Email",
+      "url": "mailto:ruchirapatil2000@gmail.com",
+      "icon": "fas fa-envelope"
+    }
+  ],
+  "backToTop": {
+    "text": "Back to Top",
+    "icon": "fas fa-chevron-up"
+  }
+}

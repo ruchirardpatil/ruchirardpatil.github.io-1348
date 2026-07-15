@@ -1,0 +1,82 @@
+{
+  "_instructions": "Organize your skills with vibrant colors.",
+  "sectionTitle": "Skills & Technologies",
+  "categories": [
+    {
+      "category": "Programming Languages",
+      "icon": "fas fa-code",
+      "color": "#FF6B6B",
+      "skills": [
+        "Java",
+        "Python",
+        "C++",
+        "Rust",
+        "C",
+        "C#",
+        "JavaScript",
+        "Kotlin",
+        "Objective-C",
+        "Scala",
+        "GraphQL",
+        "TypeScript",
+        "Go"
+      ]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "icon": "fas fa-toolbox",
+      "color": "#4ECDC4",
+      "skills": [
+        "React",
+        "Angular",
+        "Node.js",
+        "Express.js",
+        "React Native",
+        "Ruby on Rails",
+        "jQuery",
+        "Ajax",
+        "Django"
+      ]
+    },
+    {
+      "category": "Tools & Platforms",
+      "icon": "fas fa-wrench",
+      "color": "#FFE66D",
+      "skills": [
+        "Tableau",
+        "Power BI",
+        "OpenSearch",
+        "Kibana",
+        "D3.js",
+        "SPSS Modeler",
+        "Hadoop",
+        "Spark",
+        "Databricks",
+        "Git",
+        "Perforce",
+        "CloudWatch",
+        "Netsuite"
+      ]
+    },
+    {
+      "category": "Technical Skills",
+      "icon": "fas fa-laptop-code",
+      "color": "#A8DADC",
+      "skills": [
+        "SQL",
+        "MongoDB",
+        "DynamoDB",
+        "ETL/ELT pipelines",
+        "Data Wrangling",
+        "AWS (Lambda, SQS, SNS, AppConfig)",
+        "OCI",
+        "GCP",
+        "Azure",
+        "Agile",
+        "REST",
+        "HTML",
+        "CSS"
+      ]
+    }
+  ]
+}
