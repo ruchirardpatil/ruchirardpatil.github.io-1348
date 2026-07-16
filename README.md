@@ -49,7 +49,7 @@ into that sprite.
 
 `index.html` contains the real `<title>`, description, canonical URL, Open Graph and Twitter
 tags so link previews and crawlers work without running JavaScript. Update
-`https://ruchirardpatil.github.io/` there if the site moves to a custom domain, and regenerate
+`https://ruchiradayanandpatil.com/` there if the site moves to a custom domain, and regenerate
 `assets/images/og-cover.png` if the branding changes.
 
 ## Structure
@@ -68,4 +68,4 @@ tags so link previews and crawlers work without running JavaScript. Update
 ## Deploy
 
 Push to `main` and enable GitHub Pages (Settings → Pages → deploy from `main`, root).
-Live at `https://ruchirardpatil.github.io/`.
+Live at `https://ruchiradayanandpatil.com/`.
