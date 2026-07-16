@@ -4,7 +4,12 @@
   "sectionIndex": "01",
   "image": "assets/images/ruchira-patil.jpg",
   "name": "Ruchira Patil",
-  "caption": "Los Angeles, CA",
+  "specs": [
+    { "k": "Based in", "v": "Los Angeles, CA" },
+    { "k": "Focus", "v": "Data · Systems" },
+    { "k": "Languages", "v": "Java · Python · C++" },
+    { "k": "Open to", "v": "SWE roles" }
+  ],
   "paragraphs": [
     "I'm a software engineer at Amazon, working in the Appeals domain on the PXT Departures team. Most of my work lives where correctness and uptime matter — shipping features, migrating live case data between systems, and keeping services healthy through on-call rotations.",
     "Before Amazon I interned at Oracle on developer tooling and product metrics, researched assistive technology at USC Viterbi on an NSF-funded project, and applied machine learning to crash-simulation data at Applus IDIADA. I finished my M.S. at USC in 2024 and my B.Tech at MIT-WPU in 2022.",

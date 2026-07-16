@@ -146,13 +146,18 @@ async function loadAbout() {
             <figcaption>
                 <span class="portrait__dot"></span>
                 <span>${esc(d.name || '')}</span>
-                <span class="portrait__loc">${esc(d.caption || '')}</span>
             </figcaption>`;
     }
+
+    if (el('about-specs')) {
+        el('about-specs').innerHTML = (d.specs || []).map((s) => `
+            <div><dt>${esc(s.k)}</dt><dd>${esc(s.v)}</dd></div>`).join('');
+    }
+
     el('about-stats').innerHTML = (d.statistics || []).map((s) => `
-        <div class="statcard">
-            <div class="statcard__value">${esc(s.value)}</div>
-            <div class="statcard__label">${esc(s.label)}</div>
+        <div class="cell">
+            <div class="cell__num">${esc(s.value)}</div>
+            <div class="cell__lbl">${esc(s.label)}</div>
         </div>`).join('');
 }
 
@@ -370,7 +375,7 @@ function initScrollUI() {
 
 /* --------------------------------------------------------------- Reveal on scroll */
 function initReveal() {
-    const targets = document.querySelectorAll('.section__head, .about, .xp, .skillcat, .pcard, .educard, .cert, .channel');
+    const targets = document.querySelectorAll('.section__head, .about, .readout-strip, .xp, .skillcat, .pcard, .educard, .cert, .channel');
     targets.forEach((t) => t.classList.add('reveal'));
 
     if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
