@@ -1,33 +1,14 @@
 {
-  "name": "vibrant-portfolio-template",
-  "version": "1.0.0",
-  "description": "A modern, vibrant portfolio website template with dark theme and dynamic gradients",
+  "name": "ruchira-patil-portfolio",
+  "version": "2.0.0",
+  "description": "Personal portfolio for Ruchira Patil — Software Development Engineer. Vanilla HTML/CSS/JS, JSON-driven, no build step, no CDNs.",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "dev": "python -m http.server 8000"
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
   },
-  "keywords": [
-    "portfolio",
-    "template",
-    "website",
-    "personal",
-    "developer",
-    "designer",
-    "creative",
-    "dark-theme",
-    "json-driven",
-    "responsive",
-    "vanilla-js"
-  ],
-  "author": "Your Name",
+  "keywords": ["portfolio", "software-engineer", "vanilla-js", "json-driven", "static-site"],
+  "author": "Ruchira Dayanand Patil",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/vibrant-portfolio-template"
-  },
-  "bugs": {
-    "url": "https://github.com/yourusername/vibrant-portfolio-template/issues"
-  },
-  "homepage": "https://yourusername.github.io/vibrant-portfolio-template"
+  "homepage": "https://ruchirardpatil.github.io/"
 }

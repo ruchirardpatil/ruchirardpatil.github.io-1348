@@ -1,44 +1,16 @@
 {
-  "_instructions": "Configure your navigation menu.",
+  "_instructions": "Navigation. `initials` renders in the brand monogram.",
   "brand": {
-    "name": "Ruchira Dayanand Patil",
-    "href": "#home"
+    "initials": "RP",
+    "name": "Ruchira Patil",
+    "href": "#top"
   },
   "menuItems": [
-    {
-      "text": "Home",
-      "href": "#hero",
-      "icon": "fas fa-home"
-    },
-    {
-      "text": "About",
-      "href": "#about",
-      "icon": "fas fa-user"
-    },
-    {
-      "text": "Experience",
-      "href": "#experience",
-      "icon": "fas fa-briefcase"
-    },
-    {
-      "text": "Skills",
-      "href": "#skills",
-      "icon": "fas fa-code"
-    },
-    {
-      "text": "Projects",
-      "href": "#projects",
-      "icon": "fas fa-rocket"
-    },
-    {
-      "text": "Education",
-      "href": "#education",
-      "icon": "fas fa-graduation-cap"
-    },
-    {
-      "text": "Contact",
-      "href": "#contact",
-      "icon": "fas fa-envelope"
-    }
+    { "text": "About", "href": "#about" },
+    { "text": "Experience", "href": "#experience" },
+    { "text": "Stack", "href": "#skills" },
+    { "text": "Work", "href": "#projects" },
+    { "text": "Education", "href": "#education" },
+    { "text": "Contact", "href": "#contact" }
   ]
 }

@@ -1,39 +1,24 @@
 {
-  "_instructions": "About section.",
-  "sectionTitle": "About Me",
-  "image": "assets/images/profile.jpg",
+  "_instructions": "About section. Paragraphs are the narrative; statistics render as a monospace readout panel.",
+  "sectionTitle": "About",
+  "sectionIndex": "01",
+  "image": "assets/images/ruchira-patil.jpg",
+  "name": "Ruchira Patil",
+  "caption": "Los Angeles, CA",
   "paragraphs": [
-    "Passionate professional."
+    "I'm a software engineer at Amazon, working in the Appeals domain on the PXT Departures team. Most of my work lives where correctness and uptime matter — shipping features, migrating live case data between systems, and keeping services healthy through on-call rotations.",
+    "Before Amazon I interned at Oracle on developer tooling and product metrics, researched assistive technology at USC Viterbi on an NSF-funded project, and applied machine learning to crash-simulation data at Applus IDIADA. I finished my M.S. at USC in 2024 and my B.Tech at MIT-WPU in 2022.",
+    "I've published two peer-reviewed papers — a Springer chapter on customer-churn prediction and an IEEE survey on cloud-computing security — and I gravitate toward problems that sit between data and systems: pipelines, dashboards, and the instrumentation that tells you whether any of it is working."
   ],
   "statistics": [
-    {
-      "icon": "fas fa-project-diagram",
-      "value": "26+",
-      "label": "Projects Completed",
-      "color": "#FF6B6B"
-    },
-    {
-      "icon": "fas fa-briefcase",
-      "value": "5+",
-      "label": "Years Experience",
-      "color": "#4ECDC4"
-    },
-    {
-      "icon": "fas fa-code",
-      "value": "48+",
-      "label": "Technologies",
-      "color": "#FFE66D"
-    },
-    {
-      "icon": "fas fa-award",
-      "value": "3+",
-      "label": "Certifications",
-      "color": "#A8DADC"
-    }
+    { "value": "2", "label": "Peer-reviewed papers" },
+    { "value": "5", "label": "Engineering roles" },
+    { "value": "3.5", "label": "USC GPA / 4.0" },
+    { "value": "9.48", "label": "B.Tech GPA / 10" }
   ],
   "downloadCV": {
-    "text": "Download Resume",
+    "text": "Download résumé",
     "href": "assets/files/resume.pdf",
-    "icon": "fas fa-download"
+    "icon": "download"
   }
 }

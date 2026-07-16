@@ -1,26 +1,7 @@
 {
-  "_instructions": "Site-wide configuration and meta tags.",
-  "title": "Ruchira Dayanand Patil | Software Development Engineer",
-  "description": "Ruchira Dayanand Patil - Software Development Engineer | Portfolio",
-  "keywords": "Software Development Engineer, Portfolio, Ruchira Dayanand Patil",
-  "author": "Ruchira Dayanand Patil",
-  "siteName": "Ruchira Dayanand Patil",
-  "siteTitle": "Ruchira Dayanand Patil | Software Development Engineer",
-  "meta": {
-    "title": "Ruchira Dayanand Patil | Software Development Engineer",
-    "description": "Ruchira Dayanand Patil - Software Development Engineer | Portfolio",
-    "author": "Ruchira Dayanand Patil",
-    "keywords": "Software Development Engineer, Portfolio, Ruchira Dayanand Patil"
-  },
-  "branding": {
-    "name": "Ruchira Dayanand Patil",
-    "tagline": "Software Development Engineer",
-    "logo": "/logo.png"
-  },
-  "settings": {
-    "year": 2026,
-    "enableAnimations": true,
-    "enableParticles": true,
-    "navbarScrollEffect": true
-  }
+  "_instructions": "Site-wide meta. The static <head> in index.html is the source of truth for crawlers; this reinforces it at runtime.",
+  "title": "Ruchira Patil — Software Development Engineer",
+  "description": "Ruchira Dayanand Patil is a Software Development Engineer at Amazon with an M.S. from USC and two peer-reviewed publications, working across data and distributed systems.",
+  "keywords": "Ruchira Patil, Ruchira Dayanand Patil, Software Development Engineer, Amazon SDE, USC, backend engineer, distributed systems, portfolio",
+  "author": "Ruchira Dayanand Patil"
 }

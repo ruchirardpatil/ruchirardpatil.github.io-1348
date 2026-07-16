@@ -1,46 +1,29 @@
 {
-  "_instructions": "Add your education and certifications here.",
-  "sectionTitle": "Education & Certifications",
+  "_instructions": "Education and certifications. Dates left off certs where the issue date isn't recorded.",
+  "sectionTitle": "Education",
+  "sectionIndex": "05",
   "certificationsTitle": "Certifications",
   "education": [
     {
       "degree": "Master of Science",
-      "school": "University of Southern California, Los Angeles, CA, USA",
-      "institution": "University of Southern California, Los Angeles, CA, USA",
-      "period": "Jan 2023 - Dec 2024",
-      "details": "GPA: 3.50/4",
-      "description": "GPA: 3.50/4"
+      "institution": "University of Southern California",
+      "location": "Los Angeles, CA",
+      "period": "Jan 2023 — Dec 2024",
+      "detail": "GPA 3.50 / 4.0",
+      "accent": "amber"
     },
     {
       "degree": "Bachelor of Technology",
-      "school": "Dr. Vishwanath Karad MIT World Peace University, India",
-      "institution": "Dr. Vishwanath Karad MIT World Peace University, India",
-      "period": "Jul 2018 - May 2022",
-      "details": "GPA: 9.48/10",
-      "description": "GPA: 9.48/10"
+      "institution": "MIT World Peace University",
+      "location": "Pune, India",
+      "period": "Jul 2018 — May 2022",
+      "detail": "GPA 9.48 / 10",
+      "accent": "cyan"
     }
   ],
   "certifications": [
-    {
-      "title": "OCI Generative AI Certificate: LLMs, Application of GenAI",
-      "name": "OCI Generative AI Certificate: LLMs, Application of GenAI",
-      "issuer": "OCI",
-      "date": "",
-      "icon": "fas fa-certificate"
-    },
-    {
-      "title": "The Web Developer Bootcamp: HTML, CSS, Bootstrap, JavaScript, DOM, Ajax, REST, Node, Express, React, SQL",
-      "name": "The Web Developer Bootcamp: HTML, CSS, Bootstrap, JavaScript, DOM, Ajax, REST, Node, Express, React, SQL",
-      "issuer": "Udemy",
-      "date": "",
-      "icon": "fas fa-certificate"
-    },
-    {
-      "title": "Big Data - Specialization: Neo4j, Apache Spark, KNIME, Apache Hadoop, MongoDB, Data Modeling and Management",
-      "name": "Big Data - Specialization: Neo4j, Apache Spark, KNIME, Apache Hadoop, MongoDB, Data Modeling and Management",
-      "issuer": "Coursera",
-      "date": "",
-      "icon": "fas fa-certificate"
-    }
+    { "title": "OCI Generative AI Professional", "issuer": "Oracle" },
+    { "title": "The Web Developer Bootcamp", "issuer": "Udemy" },
+    { "title": "Big Data Specialization", "issuer": "Coursera" }
   ]
 }

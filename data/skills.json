@@ -1,82 +1,31 @@
 {
-  "_instructions": "Organize your skills with vibrant colors.",
-  "sectionTitle": "Skills & Technologies",
+  "_instructions": "Skills grouped by category. Rendered as monospace tags.",
+  "sectionTitle": "Stack",
+  "sectionIndex": "03",
   "categories": [
     {
-      "category": "Programming Languages",
-      "icon": "fas fa-code",
-      "color": "#FF6B6B",
-      "skills": [
-        "Java",
-        "Python",
-        "C++",
-        "Rust",
-        "C",
-        "C#",
-        "JavaScript",
-        "Kotlin",
-        "Objective-C",
-        "Scala",
-        "GraphQL",
-        "TypeScript",
-        "Go"
-      ]
+      "category": "Languages",
+      "icon": "code",
+      "accent": "amber",
+      "skills": ["Java", "Python", "C++", "C", "TypeScript", "JavaScript", "Go", "Kotlin", "Scala", "Rust", "GraphQL"]
     },
     {
-      "category": "Frameworks & Libraries",
-      "icon": "fas fa-toolbox",
-      "color": "#4ECDC4",
-      "skills": [
-        "React",
-        "Angular",
-        "Node.js",
-        "Express.js",
-        "React Native",
-        "Ruby on Rails",
-        "jQuery",
-        "Ajax",
-        "Django"
-      ]
+      "category": "Frameworks",
+      "icon": "layers",
+      "accent": "cyan",
+      "skills": ["React", "Angular", "Node.js", "Express", "React Native", "Django", "Ruby on Rails"]
     },
     {
-      "category": "Tools & Platforms",
-      "icon": "fas fa-wrench",
-      "color": "#FFE66D",
-      "skills": [
-        "Tableau",
-        "Power BI",
-        "OpenSearch",
-        "Kibana",
-        "D3.js",
-        "SPSS Modeler",
-        "Hadoop",
-        "Spark",
-        "Databricks",
-        "Git",
-        "Perforce",
-        "CloudWatch",
-        "Netsuite"
-      ]
+      "category": "Data & Cloud",
+      "icon": "database",
+      "accent": "amber",
+      "skills": ["SQL", "MongoDB", "DynamoDB", "AWS (Lambda, SQS, SNS)", "OCI", "GCP", "Azure", "ETL/ELT", "Spark", "Hadoop", "Databricks"]
     },
     {
-      "category": "Technical Skills",
-      "icon": "fas fa-laptop-code",
-      "color": "#A8DADC",
-      "skills": [
-        "SQL",
-        "MongoDB",
-        "DynamoDB",
-        "ETL/ELT pipelines",
-        "Data Wrangling",
-        "AWS (Lambda, SQS, SNS, AppConfig)",
-        "OCI",
-        "GCP",
-        "Azure",
-        "Agile",
-        "REST",
-        "HTML",
-        "CSS"
-      ]
+      "category": "Observability & Tools",
+      "icon": "activity",
+      "accent": "cyan",
+      "skills": ["OpenSearch", "Kibana", "CloudWatch", "Tableau", "Power BI", "D3.js", "Git", "Perforce", "REST", "Agile"]
     }
   ]
 }

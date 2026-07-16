@@ -1,60 +1,84 @@
 {
-  "_instructions": "Add your work experience here. Copy the experience object for each job.",
-  "sectionTitle": "Professional Experience",
+  "_instructions": "Work experience, most recent first. `type` and `tech` render as monospace tags.",
+  "sectionTitle": "Experience",
+  "sectionIndex": "02",
   "experiences": [
     {
       "title": "Software Development Engineer",
       "company": "Amazon",
-      "period": "Mar 2025 - Apr 2026",
-      "location": "",
-      "description": "Developed features in the Appeals domain on the PXT Departures team, improving workflows by 30%. Led migration of 5K+ intervention cases to PXT-CMS and collaborated with 5+ teams to deliver scalable solutions. Provided on-call support, resolving 95% of incidents within SLA, and automated processes to cut manual work by 20%.",
+      "logo": { "type": "brand", "name": "amazon" },
+      "type": "Full-time",
+      "period": "Mar 2025 — Present",
+      "icon": "briefcase",
+      "accent": "amber",
+      "summary": "Building features in the Appeals domain on the PXT Departures team.",
       "responsibilities": [
-        "Developed features in the Appeals domain on the PXT Departures team, improving workflows by 30%",
-        "Led migration of 5K+ intervention cases to PXT-CMS and collaborated with 5+ teams to deliver scalable solutions",
-        "Provided on-call support, resolving 95% of incidents within SLA, and automated processes to cut manual work by 20%"
-      ]
+        "Shipped features in the Appeals domain that improved case-handling workflows by ~30%.",
+        "Led the migration of 5K+ intervention cases to PXT-CMS, coordinating across 5+ partner teams.",
+        "Held on-call, resolving 95% of incidents within SLA and automating processes to cut manual work by ~20%."
+      ],
+      "tech": ["Java", "AWS", "DynamoDB", "SQS/SNS", "On-call"]
     },
     {
       "title": "Software Engineer Intern",
       "company": "Oracle",
-      "period": "May 2024 - Aug 2024",
-      "location": "",
-      "description": "Consolidated 15+ loggers by merging similar functionalities to enhance overall system efficiency. Developed 40+ comprehensive and actionable product metrics using SQL queries for the SuiteCloud Development Framework to support advanced data analysis and decision-making, and built dynamic, interactive dashboards by applying OpenSearch to visualize key metrics.",
+      "logo": { "type": "brand", "name": "oracle" },
+      "type": "Internship",
+      "period": "May 2024 — Aug 2024",
+      "icon": "database",
+      "accent": "cyan",
+      "summary": "Developer tooling and product metrics for the SuiteCloud Development Framework.",
       "responsibilities": [
-        "Consolidated 15+ loggers by merging similar functionalities to enhance overall system efficiency",
-        "Developed 40+ comprehensive and actionable product metrics using SQL queries for the SuiteCloud Development Framework to support advanced data analysis and decision-making, and built dynamic, interactive dashboards by applying OpenSearch to visualize key metrics"
-      ]
+        "Consolidated 15+ loggers by merging overlapping functionality to simplify the system.",
+        "Built 40+ product metrics with SQL to support analysis and decisions across the framework.",
+        "Shipped interactive OpenSearch dashboards to visualize the key metrics."
+      ],
+      "tech": ["SQL", "OpenSearch", "Kibana", "SuiteCloud"]
     },
     {
       "title": "STEM Researcher",
       "company": "USC Viterbi",
-      "period": "Apr 2023 - Aug 2023",
-      "location": "",
-      "description": "Led an NSF-funded project, developing user-centered assistive technologies to benefit 500+ disabled individuals. Created an accessible website, increasing digital inclusivity for disabled individuals by 35%.",
+      "logo": { "type": "mono", "text": "USC" },
+      "type": "Research",
+      "period": "Apr 2023 — Aug 2023",
+      "icon": "flask",
+      "accent": "amber",
+      "summary": "NSF-funded work on user-centered assistive technology.",
       "responsibilities": [
-        "Led an NSF-funded project, developing user-centered assistive technologies to benefit 500+ disabled individuals",
-        "Created an accessible website, increasing digital inclusivity for disabled individuals by 35%"
-      ]
+        "Led an NSF-funded project developing assistive technologies for 500+ users with disabilities.",
+        "Built an accessible website that improved digital inclusivity for the target group by ~35%."
+      ],
+      "tech": ["Accessibility", "Web", "User research"]
     },
     {
       "title": "Data Science Intern",
       "company": "Applus IDIADA",
-      "period": "Jan 2022 - Jun 2022",
-      "location": "",
-      "description": "Applied ML techniques to preprocess crash simulation data, improving material selection efficiency by 60%, reducing deformation by 25%, and enhancing vehicle safety by 20% through cross-functional collaboration.",
+      "logo": { "type": "mono", "text": "IDIADA" },
+      "type": "Internship",
+      "period": "Jan 2022 — Jun 2022",
+      "icon": "chart",
+      "accent": "cyan",
+      "summary": "Machine learning on automotive crash-simulation data.",
       "responsibilities": [
-        "Applied ML techniques to preprocess crash simulation data, improving material selection efficiency by 60%, reducing deformation by 25%, and enhancing vehicle safety by 20% through cross-functional collaboration"
-      ]
+        "Preprocessed crash-simulation data with ML techniques, improving material-selection efficiency by ~60%.",
+        "Contributed to a ~25% reduction in deformation and ~20% safety gains through cross-functional work."
+      ],
+      "tech": ["Python", "Machine learning", "Data prep"]
     },
     {
       "title": "Software Developer Intern",
       "company": "Salahkaar Consultants",
-      "period": "Mar 2021 - Jun 2021",
-      "location": "",
-      "description": "Built a user-friendly performance analysis portal that streamlined task management, improved cross-team communication by 40%, and supported ratings for 200+ tasks monthly.",
+      "logo": { "type": "mono", "text": "SC" },
+      "type": "Internship",
+      "period": "Mar 2021 — Jun 2021",
+      "icon": "code",
+      "accent": "amber",
+      "summary": "A performance-analysis portal for task management and reviews.",
       "responsibilities": [
-        "Built a user-friendly performance analysis portal that streamlined task management, improved cross-team communication by 40%, and supported ratings for 200+ tasks monthly"
-      ]
+        "Built a performance-analysis portal that streamlined task management and improved cross-team communication by ~40%.",
+        "Supported ratings for 200+ tasks per month."
+      ],
+      "tech": ["Full-stack", "Web"]
     }
   ]
 }

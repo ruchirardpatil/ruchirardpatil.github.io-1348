@@ -1,767 +1,388 @@
-// ============================================
-// Portfolio Application - Main JavaScript
-// ============================================
+/* =====================================================================
+   Ruchira Patil — portfolio runtime
+   JSON-driven rendering, inline SVG icons, no external dependencies.
+   ===================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
-    initializeApp();
-});
+const ACCENTS = { amber: '#E7A94E', cyan: '#6FD3C9' };
 
-// ============================================
-// Initialize Application
-// ============================================
-async function initializeApp() {
-    try {
-        // Initialize particles background
-        initializeParticles();
+const $  = (sel, root = document) => root.querySelector(sel);
+const el = (id) => document.getElementById(id);
 
-        // Load all data sections
-        await Promise.all([
-            loadSiteConfig(),
-            loadNavigation(),
-            loadHero(),
-            loadAbout(),
-            loadExperience(),
-            loadSkills(),
-            loadProjects(),
-            loadEducation(),
-            loadContact(),
-            loadFooter()
-        ]);
+/* Render an inline SVG icon from the sprite. */
+const icon = (name, cls = 'ic') =>
+    name ? `<svg class="${cls}" aria-hidden="true"><use href="#icon-${name}"/></svg>` : '';
 
-        // Initialize interactive features
-        initializeNavigation();
-        initializeScrollEffects();
-        initializeScrollReveal();
-        initializeBackToTop();
+/* Escape user-facing strings destined for innerHTML. */
+const esc = (s = '') =>
+    String(s).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-        console.log('Portfolio loaded successfully!');
-    } catch (error) {
-        console.error('Error initializing application:', error);
-    }
+async function getJSON(path) {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`${path} → ${res.status}`);
+    return res.json();
 }
 
-// ============================================
-// Load Site Configuration
-// ============================================
-async function loadSiteConfig() {
-    try {
-        const response = await fetch('data/site-config.json');
-        const data = await response.json();
+document.addEventListener('DOMContentLoaded', init);
 
-        // Update meta tags
-        document.title = data.title;
-        document.querySelector('meta[name="description"]').setAttribute('content', data.description);
-        document.querySelector('meta[name="keywords"]').setAttribute('content', data.keywords);
-        document.querySelector('meta[name="author"]').setAttribute('content', data.author);
-    } catch (error) {
-        console.error('Error loading site config:', error);
-    }
+async function init() {
+    await Promise.all([
+        loadMeta(), loadNavigation(), loadHero(), loadAbout(), loadExperience(),
+        loadSkills(), loadProjects(), loadEducation(), loadContact(), loadFooter(),
+    ].map((p) => p.catch((e) => console.error(e))));
+
+    // Content is in place — trigger the orchestrated hero entrance.
+    document.getElementById('top')?.classList.add('in');
+
+    initNav();
+    initScrollUI();
+    initReveal();
+    handleInitialHash();
 }
 
-// ============================================
-// Load Navigation
-// ============================================
-async function loadNavigation() {
-    try {
-        const response = await fetch('data/navigation.json');
-        const data = await response.json();
+/* Content is injected after load, so a cold-load deep link (e.g. /#projects)
+   has nothing to scroll to until now. Correct it once, accounting for the fixed nav. */
+function handleInitialHash() {
+    const hash = location.hash;
+    if (!hash || hash === '#top') return;
+    if (!document.querySelector(hash)) return;
 
-        // Set brand name
-        const brandElement = document.getElementById('nav-brand');
-        if (brandElement) {
-            brandElement.textContent = data.brand.name;
-            brandElement.href = data.brand.href;
-        }
-
-        // Build navigation menu
-        const navMenu = document.getElementById('nav-menu');
-        if (navMenu) {
-            navMenu.innerHTML = data.menuItems.map(item => `
-                <li>
-                    <a href="${item.href}" class="nav-link">
-                        <i class="${item.icon}"></i>
-                        ${item.text}
-                    </a>
-                </li>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading navigation:', error);
-    }
-}
-
-// ============================================
-// Load Hero Section
-// ============================================
-async function loadHero() {
-    try {
-        const response = await fetch('data/hero.json');
-        const data = await response.json();
-
-        // Set text content
-        document.getElementById('hero-greeting').textContent = data.greeting;
-        document.getElementById('hero-name').innerHTML = `${data.name.split(' ')[0]} <span>${data.name.split(' ').slice(1).join(' ')}</span>`;
-        document.getElementById('hero-title').textContent = data.title;
-        document.getElementById('hero-tagline').textContent = data.tagline;
-        document.getElementById('hero-summary').textContent = data.summary;
-
-        // Render highlights
-        const highlightsContainer = document.getElementById('hero-highlights');
-        if (highlightsContainer && data.highlights) {
-            highlightsContainer.innerHTML = data.highlights.map(highlight => `
-                <div class="highlight-item">
-                    <i class="${highlight.icon}" style="color: ${highlight.color}"></i>
-                    <span>${highlight.text}</span>
-                </div>
-            `).join('');
-        }
-
-        // Render CTA buttons
-        const ctaContainer = document.getElementById('hero-cta');
-        if (ctaContainer && data.cta && data.cta.buttons) {
-            ctaContainer.innerHTML = data.cta.buttons.map(button => `
-                <a href="${button.href}" class="btn btn-${button.type}">
-                    ${button.icon ? `<i class="${button.icon}"></i>` : ''}
-                    ${button.text}
-                </a>
-            `).join('');
-        }
-
-        // Render social links
-        const socialContainer = document.getElementById('hero-social');
-        if (socialContainer && data.socialLinks) {
-            socialContainer.innerHTML = data.socialLinks.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="${link.platform}">
-                    <i class="${link.icon}"></i>
-                </a>
-            `).join('');
-        }
-
-        // Render scroll indicator
-        const scrollIndicator = document.getElementById('scroll-indicator');
-        if (scrollIndicator && data.scrollIndicator) {
-            scrollIndicator.innerHTML = `
-                <span>${data.scrollIndicator.text}</span>
-                <i class="${data.scrollIndicator.icon}"></i>
-            `;
-        }
-    } catch (error) {
-        console.error('Error loading hero section:', error);
-    }
-}
-
-// ============================================
-// Load About Section
-// ============================================
-async function loadAbout() {
-    try {
-        const response = await fetch('data/about.json');
-        const data = await response.json();
-
-        // Set section title
-        document.getElementById('about-title').textContent = data.sectionTitle;
-
-        // Render paragraphs
-        const textContainer = document.getElementById('about-text');
-        if (textContainer && data.paragraphs) {
-            textContainer.innerHTML = data.paragraphs.map(paragraph => `
-                <p>${paragraph}</p>
-            `).join('');
-        }
-
-        // Render statistics
-        const statsContainer = document.getElementById('about-stats');
-        if (statsContainer && data.statistics) {
-            statsContainer.innerHTML = data.statistics.map(stat => `
-                <div class="stat-card">
-                    <i class="${stat.icon}" style="color: ${stat.color}"></i>
-                    <span class="stat-value">${stat.value}</span>
-                    <span class="stat-label">${stat.label}</span>
-                </div>
-            `).join('');
-        }
-
-        // Render download CV button
-        const actionsContainer = document.getElementById('about-actions');
-        if (actionsContainer && data.downloadCV) {
-            actionsContainer.innerHTML = `
-                <a href="${data.downloadCV.href}" download class="btn btn-primary">
-                    <i class="${data.downloadCV.icon}"></i>
-                    ${data.downloadCV.text}
-                </a>
-            `;
-        }
-    } catch (error) {
-        console.error('Error loading about section:', error);
-    }
-}
-
-// ============================================
-// Load Experience Section
-// ============================================
-async function loadExperience() {
-    try {
-        const response = await fetch('data/experience.json');
-        const data = await response.json();
-
-        // Set section title
-        document.getElementById('experience-title').textContent = data.sectionTitle;
-
-        // Render timeline
-        const timelineContainer = document.getElementById('experience-timeline');
-        if (timelineContainer && data.experiences) {
-            timelineContainer.innerHTML = data.experiences.map(exp => `
-                <div class="timeline-item">
-                    <div class="timeline-empty"></div>
-                    <div class="timeline-icon" style="background: ${exp.color}">
-                        <i class="${exp.icon}"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="experience-header">
-                            <h3 class="experience-title">${exp.title}</h3>
-                            <p class="experience-company">
-                                ${exp.company} ${exp.location ? `• ${exp.location}` : ''}
-                            </p>
-                            <p class="experience-period">
-                                <i class="fas fa-calendar-alt"></i>
-                                ${exp.period}
-                                ${exp.type ? `<span class="experience-type">• ${exp.type}</span>` : ''}
-                            </p>
-                        </div>
-                        <p class="experience-description">${exp.description}</p>
-                        ${exp.responsibilities ? `
-                            <ul class="experience-responsibilities">
-                                ${exp.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
-                            </ul>
-                        ` : ''}
-                        ${exp.technologies ? `
-                            <div class="experience-tech">
-                                ${exp.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                            </div>
-                        ` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading experience section:', error);
-    }
-}
-
-// ============================================
-// Load Skills Section
-// ============================================
-async function loadSkills() {
-    try {
-        const response = await fetch('data/skills.json');
-        const data = await response.json();
-
-        // Set section title
-        document.getElementById('skills-title').textContent = data.sectionTitle;
-
-        // Render skill categories
-        const skillsGrid = document.getElementById('skills-grid');
-        if (skillsGrid && data.categories) {
-            skillsGrid.innerHTML = data.categories.map(category => `
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-category-icon" style="background: ${category.color}20; color: ${category.color}">
-                            <i class="${category.icon}"></i>
-                        </div>
-                        <h3 class="skill-category-title">${category.category}</h3>
-                    </div>
-                    <div class="skill-list">
-                        ${category.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading skills section:', error);
-    }
-}
-
-// ============================================
-// Load Projects Section
-// ============================================
-async function loadProjects() {
-    try {
-        const response = await fetch('data/projects.json');
-        const data = await response.json();
-
-        // Set section title
-        document.getElementById('projects-title').textContent = data.sectionTitle;
-
-        // Render projects
-        const projectsGrid = document.getElementById('projects-grid');
-        if (projectsGrid && data.projects) {
-            projectsGrid.innerHTML = data.projects.map(project => `
-                <div class="project-card">
-                    <div class="project-icon" style="background: ${project.color}">
-                        <i class="${project.icon}"></i>
-                    </div>
-                    <div class="project-header">
-                        <h3 class="project-title">${project.title}</h3>
-                    </div>
-                    <p class="project-description">${project.description}</p>
-                    ${project.technologies ? `
-                        <div class="project-tech">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                    ` : ''}
-                    ${project.links ? `
-                        <div class="project-links">
-                            ${project.links.github ? `
-                                <a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                    Code
-                                </a>
-                            ` : ''}
-                            ${project.links.demo ? `
-                                <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo
-                                </a>
-                            ` : ''}
-                        </div>
-                    ` : ''}
-                    ${project.stats ? `
-                        <div class="project-stats">
-                            ${Object.entries(project.stats).map(([key, value]) => `
-                                <div class="project-stat">
-                                    <span class="project-stat-value">${value}</span>
-                                    <span class="project-stat-label">${key}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                </div>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading projects section:', error);
-    }
-}
-
-// ============================================
-// Load Education Section
-// ============================================
-async function loadEducation() {
-    try {
-        const response = await fetch('data/education.json');
-        const data = await response.json();
-
-        // Set section title
-        document.getElementById('education-title').textContent = data.sectionTitle;
-
-        // Render education items
-        const educationGrid = document.getElementById('education-grid');
-        if (educationGrid && data.education) {
-            educationGrid.innerHTML = data.education.map(edu => `
-                <div class="education-card">
-                    <div class="education-icon" style="background: ${edu.color}20; color: ${edu.color}">
-                        <i class="${edu.icon}"></i>
-                    </div>
-                    <h3 class="education-degree">${edu.degree}</h3>
-                    <p class="education-institution">${edu.institution}</p>
-                    <p class="education-period">${edu.period}</p>
-                    <p class="education-description">${edu.description}</p>
-                    ${edu.achievements ? `
-                        <ul class="education-achievements">
-                            ${edu.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
-                        </ul>
-                    ` : ''}
-                </div>
-            `).join('');
-        }
-
-        // Set certifications title
-        document.getElementById('certifications-title').textContent = data.certificationsTitle;
-
-        // Render certifications
-        const certificationsGrid = document.getElementById('certifications-grid');
-        if (certificationsGrid && data.certifications) {
-            certificationsGrid.innerHTML = data.certifications.map(cert => `
-                <div class="certification-card">
-                    <div class="certification-icon" style="color: ${cert.color}">
-                        <i class="${cert.icon}"></i>
-                    </div>
-                    <h4 class="certification-title">${cert.title}</h4>
-                    <p class="certification-issuer">${cert.issuer}</p>
-                    <p class="certification-date">${cert.date}</p>
-                </div>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading education section:', error);
-    }
-}
-
-// ============================================
-// Load Contact Section
-// ============================================
-async function loadContact() {
-    try {
-        const response = await fetch('data/contact.json');
-        const data = await response.json();
-
-        // Set section title and subtitle
-        document.getElementById('contact-title').textContent = data.sectionTitle;
-        document.getElementById('contact-subtitle').textContent = data.subtitle;
-
-        // Render contact info
-        const contactInfoContainer = document.getElementById('contact-info');
-        if (contactInfoContainer && data.contactInfo) {
-            contactInfoContainer.innerHTML = data.contactInfo.map(info => `
-                <a href="${info.href}" class="contact-info-item" ${info.type !== 'location' ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-                    <div class="contact-icon" style="background: ${info.color}20; color: ${info.color}">
-                        <i class="${info.icon}"></i>
-                    </div>
-                    <div class="contact-info-content">
-                        <h4>${info.label}</h4>
-                        <p>${info.value}</p>
-                    </div>
-                </a>
-            `).join('');
-        }
-
-        // Render contact form
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm && data.form) {
-            contactForm.action = data.form.action;
-            contactForm.method = data.form.method;
-
-            contactForm.innerHTML = data.form.fields.map(field => `
-                <div class="form-group">
-                    <label for="${field.name}">
-                        <i class="${field.icon}"></i>
-                        ${field.label}
-                    </label>
-                    ${field.type === 'textarea' ? `
-                        <textarea
-                            id="${field.name}"
-                            name="${field.name}"
-                            placeholder="${field.placeholder}"
-                            ${field.required ? 'required' : ''}
-                            rows="${field.rows || 5}"
-                        ></textarea>
-                    ` : `
-                        <input
-                            type="${field.type}"
-                            id="${field.name}"
-                            name="${field.name}"
-                            placeholder="${field.placeholder}"
-                            ${field.required ? 'required' : ''}
-                        />
-                    `}
-                </div>
-            `).join('') + `
-                <button type="submit" class="form-submit">
-                    <i class="${data.form.submitIcon}"></i>
-                    ${data.form.submitText}
-                </button>
-                <div class="form-message"></div>
-            `;
-
-            // Handle form submission
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const formMessage = contactForm.querySelector('.form-message');
-                const submitButton = contactForm.querySelector('.form-submit');
-
-                try {
-                    submitButton.disabled = true;
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-                    const formData = new FormData(contactForm);
-                    const response = await fetch(contactForm.action, {
-                        method: contactForm.method,
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        formMessage.textContent = data.form.successMessage;
-                        formMessage.className = 'form-message success';
-                        formMessage.style.display = 'block';
-                        contactForm.reset();
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                } catch (error) {
-                    formMessage.textContent = data.form.errorMessage;
-                    formMessage.className = 'form-message error';
-                    formMessage.style.display = 'block';
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = `<i class="${data.form.submitIcon}"></i> ${data.form.submitText}`;
-                }
-            });
-        }
-
-        // Render social media links
-        const contactSocial = document.getElementById('contact-social');
-        if (contactSocial && data.socialMedia) {
-            contactSocial.innerHTML = data.socialMedia.map(social => `
-                <a href="${social.url}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="${social.platform}">
-                    <i class="${social.icon}"></i>
-                </a>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading contact section:', error);
-    }
-}
-
-// ============================================
-// Load Footer
-// ============================================
-async function loadFooter() {
-    try {
-        const response = await fetch('data/footer.json');
-        const data = await response.json();
-
-        // Set tagline
-        const taglineElement = document.getElementById('footer-tagline');
-        if (taglineElement) {
-            taglineElement.textContent = data.tagline;
-        }
-
-        // Render social links
-        const footerSocial = document.getElementById('footer-social');
-        if (footerSocial && data.socialLinks) {
-            footerSocial.innerHTML = data.socialLinks.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="${link.platform}">
-                    <i class="${link.icon}"></i>
-                </a>
-            `).join('');
-        }
-
-        // Set copyright
-        const copyrightElement = document.getElementById('footer-copyright');
-        if (copyrightElement) {
-            copyrightElement.textContent = data.copyright.text;
-        }
-
-        // Render footer links
-        const footerLinks = document.getElementById('footer-links');
-        if (footerLinks && data.links) {
-            footerLinks.innerHTML = data.links.map(link => `
-                <a href="${link.href}">${link.text}</a>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error loading footer:', error);
-    }
-}
-
-// ============================================
-// Initialize Navigation
-// ============================================
-function initializeNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Mobile menu toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Close menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Smooth scroll to sections
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// ============================================
-// Initialize Scroll Effects
-// ============================================
-function initializeScrollEffects() {
-    const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        // Navbar scroll effect
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Active link highlighting
-        const sections = document.querySelectorAll('section[id]');
-        let currentSection = '';
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-// ============================================
-// Initialize Scroll Reveal Animation
-// ============================================
-function initializeScrollReveal() {
-    const revealElements = document.querySelectorAll('.section, .timeline-item, .skill-category, .project-card, .education-card, .certification-card');
-
-    const revealOnScroll = () => {
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('reveal', 'active');
-            }
+    // Force an instant jump — CSS scroll-behavior: smooth would otherwise swallow this.
+    const jump = () => {
+        const target = document.querySelector(hash);
+        if (!target) return;
+        const de = document.documentElement;
+        const prev = de.style.scrollBehavior;
+        de.style.scrollBehavior = 'auto';
+        window.scrollTo(0, target.offsetTop - 80);
+        de.style.scrollBehavior = prev;
+        // A programmatic jump can bypass the IntersectionObserver, so reveal what's now on screen.
+        document.querySelectorAll('.reveal:not(.in)').forEach((elm) => {
+            if (elm.getBoundingClientRect().top < window.innerHeight) elm.classList.add('in');
         });
     };
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+    requestAnimationFrame(() => {
+        jump();
+        const landed = Math.round(window.scrollY);
+        // Images/fonts can shift layout after this first jump — re-assert once everything
+        // has loaded, but only if the reader hasn't scrolled away in the meantime.
+        if (document.readyState !== 'complete') {
+            window.addEventListener('load', () => {
+                if (Math.abs(window.scrollY - landed) < 4) jump();
+            }, { once: true });
+        }
+    });
 }
 
-// ============================================
-// Initialize Back to Top Button
-// ============================================
-function initializeBackToTop() {
-    const backToTopButton = document.getElementById('back-to-top');
+/* --------------------------------------------------------------- Meta */
+async function loadMeta() {
+    const d = await getJSON('data/site-config.json');
+    document.title = d.title;
+    const set = (name, val) => { const m = $(`meta[name="${name}"]`); if (m && val) m.setAttribute('content', val); };
+    set('description', d.description);
+    set('keywords', d.keywords);
+    set('author', d.author);
+}
 
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
+/* --------------------------------------------------------------- Nav */
+async function loadNavigation() {
+    const d = await getJSON('data/navigation.json');
+    const brand = el('nav-brand');
+    brand.href = d.brand.href;
+    brand.innerHTML = `<span class="brand__mono">${esc(d.brand.initials)}</span><span class="brand__name">${esc(d.brand.name)}</span>`;
+    el('nav-menu').innerHTML = d.menuItems
+        .map((i) => `<li><a href="${esc(i.href)}">${esc(i.text)}</a></li>`).join('');
+}
 
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+/* --------------------------------------------------------------- Hero */
+async function loadHero() {
+    const d = await getJSON('data/hero.json');
+
+    const status = el('hero-status');
+    status.textContent = `${d.status}  ·  ${d.location}`;
+
+    // JSON is authoritative; the static markup is the no-JS / crawler fallback.
+    const setText = (sel, val) => { const n = $(sel); if (n && val) n.textContent = val; };
+    setText('.hero__name', d.name);
+    setText('.hero__tagline', d.tagline);
+    setText('.hero__summary', d.summary);
+
+    el('hero-metrics').innerHTML = (d.metrics || []).map((m) => `
+        <div class="metric">
+            <div class="metric__value">${esc(m.value)}</div>
+            <span class="metric__label">${esc(m.label)}</span>
+        </div>`).join('');
+
+    el('hero-cta').innerHTML = (d.cta?.buttons || []).map((b) => {
+        const cls = b.type === 'primary' ? 'btn btn--primary' : 'btn btn--ghost';
+        const dl  = b.download ? ' download' : '';
+        return `<a class="${cls}" href="${esc(b.href)}"${dl}>${icon(b.icon)}${esc(b.text)}</a>`;
+    }).join('');
+
+    el('hero-social').innerHTML = socialRow(d.socialLinks);
+}
+
+function socialRow(links = []) {
+    return links.map((l) => `
+        <a class="iconbtn" href="${esc(l.url)}" aria-label="${esc(l.platform)}"
+           ${l.url.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>${icon(l.icon)}</a>`).join('');
+}
+
+function sectionHead(prefix, d) {
+    if (el(`${prefix}-index`)) el(`${prefix}-index`).textContent = d.sectionIndex || '';
+    if (el(`${prefix}-title`)) el(`${prefix}-title`).textContent = d.sectionTitle || '';
+}
+
+/* --------------------------------------------------------------- About */
+async function loadAbout() {
+    const d = await getJSON('data/about.json');
+    sectionHead('about', d);
+    el('about-text').innerHTML = (d.paragraphs || []).map((p) => `<p>${esc(p)}</p>`).join('');
+
+    if (el('about-portrait') && d.image) {
+        el('about-portrait').innerHTML = `
+            <img src="${esc(d.image)}" alt="${esc(d.name || 'Portrait')}" width="720" height="720" loading="lazy" decoding="async">
+            <figcaption>
+                <span class="portrait__dot"></span>
+                <span>${esc(d.name || '')}</span>
+                <span class="portrait__loc">${esc(d.caption || '')}</span>
+            </figcaption>`;
+    }
+    el('about-stats').innerHTML = (d.statistics || []).map((s) => `
+        <div class="statcard">
+            <div class="statcard__value">${esc(s.value)}</div>
+            <div class="statcard__label">${esc(s.label)}</div>
+        </div>`).join('');
+}
+
+/* Company logo badge: real brand mark, monogram, or role-icon fallback. */
+function xpLogo(x) {
+    const lg = x.logo;
+    if (lg?.type === 'brand') return `<span class="xp__logo xp__logo--brand" title="${esc(x.company)}">${icon(lg.name, 'brandmark')}</span>`;
+    if (lg?.type === 'mono')  return `<span class="xp__logo xp__logo--mono" title="${esc(x.company)}">${esc(lg.text)}</span>`;
+    return `<span class="xp__logo xp__logo--brand">${icon(x.icon || 'briefcase')}</span>`;
+}
+
+/* --------------------------------------------------------------- Experience */
+async function loadExperience() {
+    const d = await getJSON('data/experience.json');
+    sectionHead('experience', d);
+    el('experience-timeline').innerHTML = (d.experiences || []).map((x) => `
+        <article class="xp" data-accent="${esc(x.accent || 'amber')}">
+            <div class="xp__meta">
+                ${xpLogo(x)}
+                <span class="xp__period">${esc(x.period)}</span>
+                <span class="xp__type">${esc(x.type || '')}</span>
+            </div>
+            <div class="xp__body">
+                <h3 class="xp__role">${esc(x.title)} <span class="xp__company">· ${esc(x.company)}</span></h3>
+                ${x.summary ? `<p class="xp__summary">${esc(x.summary)}</p>` : ''}
+                ${x.responsibilities?.length ? `<ul class="xp__list">${x.responsibilities.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
+                ${x.tech?.length ? `<div class="tags">${x.tech.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
+            </div>
+        </article>`).join('');
+}
+
+/* --------------------------------------------------------------- Skills */
+async function loadSkills() {
+    const d = await getJSON('data/skills.json');
+    sectionHead('skills', d);
+    el('skills-grid').innerHTML = (d.categories || []).map((c) => `
+        <div class="skillcat" data-accent="${esc(c.accent || 'amber')}">
+            <div class="skillcat__head">
+                <span class="skillcat__icon">${icon(c.icon || 'code')}</span>
+                <h3 class="skillcat__title">${esc(c.category)}</h3>
+            </div>
+            <div class="skillcat__list">${(c.skills || []).map((s) => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+        </div>`).join('');
+}
+
+/* --------------------------------------------------------------- Projects */
+async function loadProjects() {
+    const d = await getJSON('data/projects.json');
+    sectionHead('projects', d);
+    if (el('projects-note')) el('projects-note').textContent = d.note || '';
+
+    el('projects-grid').innerHTML = (d.projects || []).map((p) => {
+        const a = ACCENTS[p.accent] || ACCENTS.amber;
+        const ang = ((p.seed || 1) * 37) % 360;
+        const id = `PRJ_${String(p.seed || 0).padStart(2, '0')}`;
+        const links = (p.links || []).map((l) =>
+            `<a class="plink" href="${esc(l.href)}" target="_blank" rel="noopener">${icon(l.icon || 'external')}${esc(l.label)}</a>`).join('');
+        const cover = p.image
+            ? `<div class="pcard__cover pcard__cover--img">
+                   <img src="${esc(p.image)}" alt="Illustration for ${esc(p.title)}" loading="lazy" decoding="async" width="1200" height="800">
+                   <span class="pcard__seed">${id}</span>
+                   <span class="pcard__year">${esc(p.year || '')}</span>
+               </div>`
+            : `<div class="pcard__cover" style="--a:${a}; --ang:${ang}deg">
+                   <span class="glyph">${String(p.seed || 0).padStart(2, '0')}</span>
+                   <span class="pcard__seed">${id}</span>
+                   <span class="pcard__year">${esc(p.year || '')}</span>
+               </div>`;
+        return `
+        <article class="pcard" data-accent="${esc(p.accent || 'amber')}">
+            ${cover}
+            <div class="pcard__body">
+                <span class="pcard__ctx">${esc(p.context || '')}</span>
+                <h3 class="pcard__title">${esc(p.title)}</h3>
+                <p class="pcard__desc">${esc(p.description)}</p>
+                <div class="pcard__foot">
+                    <div class="tags">${(p.tech || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+                    ${links ? `<div class="pcard__links">${links}</div>` : ''}
+                </div>
+            </div>
+        </article>`;
+    }).join('');
+}
+
+/* --------------------------------------------------------------- Education */
+async function loadEducation() {
+    const d = await getJSON('data/education.json');
+    sectionHead('education', d);
+    el('education-grid').innerHTML = (d.education || []).map((e) => `
+        <div class="educard" data-accent="${esc(e.accent || 'amber')}">
+            <span class="educard__period">${esc(e.period)}</span>
+            <h3 class="educard__degree">${esc(e.degree)}</h3>
+            <p class="educard__inst">${esc(e.institution)}</p>
+            ${e.location ? `<p class="educard__loc">${esc(e.location)}</p>` : ''}
+            ${e.detail ? `<span class="educard__detail">${esc(e.detail)}</span>` : ''}
+        </div>`).join('');
+
+    if (el('certifications-title')) el('certifications-title').textContent = d.certificationsTitle || 'Certifications';
+    el('certifications-grid').innerHTML = (d.certifications || []).map((c) => `
+        <li class="cert">
+            ${icon('doc')}
+            <div>
+                <div class="cert__title">${esc(c.title)}</div>
+                <div class="cert__issuer">${esc(c.issuer)}</div>
+            </div>
+        </li>`).join('');
+}
+
+/* --------------------------------------------------------------- Contact */
+async function loadContact() {
+    const d = await getJSON('data/contact.json');
+    sectionHead('contact', d);
+    if (el('contact-subtitle')) el('contact-subtitle').textContent = d.subtitle || '';
+
+    el('contact-grid').innerHTML = (d.channels || []).map((c) => {
+        const inner = `
+            <span class="channel__icon">${icon(c.icon)}</span>
+            <div>
+                <div class="channel__label">${esc(c.label)}</div>
+                <div class="channel__value">${esc(c.value)}</div>
+            </div>`;
+        return c.href
+            ? `<a class="channel" data-accent="${esc(c.accent || 'amber')}" href="${esc(c.href)}" ${c.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>${inner}</a>`
+            : `<div class="channel" data-accent="${esc(c.accent || 'amber')}">${inner}</div>`;
+    }).join('');
+
+    const actions = el('contact-actions');
+    const parts = [];
+    if (d.copyEmail) {
+        parts.push(`<button class="copybtn" id="copy-email" data-email="${esc(d.copyEmail)}">${icon('copy')}<span>Copy email</span></button>`);
+    }
+    if (d.resume) {
+        parts.push(`<a class="btn btn--ghost" href="${esc(d.resume.href)}" download>${icon(d.resume.icon)}${esc(d.resume.text)}</a>`);
+    }
+    actions.innerHTML = parts.join('');
+
+    const copyBtn = el('copy-email');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            const email = copyBtn.dataset.email;
+            try { await navigator.clipboard.writeText(email); }
+            catch { /* clipboard blocked — fall through to visual confirm */ }
+            copyBtn.classList.add('copied');
+            copyBtn.innerHTML = `${icon('check')}<span>Copied</span>`;
+            setTimeout(() => {
+                copyBtn.classList.remove('copied');
+                copyBtn.innerHTML = `${icon('copy')}<span>Copy email</span>`;
+            }, 1800);
         });
     }
 }
 
-// ============================================
-// Initialize Particles Background
-// ============================================
-function initializeParticles() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#667eea', '#764ba2', '#f093fb']
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#667eea',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
+/* --------------------------------------------------------------- Footer */
+async function loadFooter() {
+    const d = await getJSON('data/footer.json');
+    if (el('footer-name')) el('footer-name').textContent = d.name;
+    if (el('footer-tagline')) el('footer-tagline').textContent = d.tagline;
+    if (el('footer-copyright')) el('footer-copyright').textContent = d.copyright;
+    el('footer-social').innerHTML = socialRow(d.socialLinks);
+}
+
+/* --------------------------------------------------------------- Nav behaviour */
+function initNav() {
+    const toggle = el('nav-toggle');
+    const menu = el('nav-menu');
+
+    const setMenu = (open) => {
+        menu.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.querySelector('use').setAttribute('href', open ? '#icon-close' : '#icon-menu');
+    };
+
+    toggle?.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('open')) {
+            setMenu(false);
+            toggle.focus();
+        }
+    });
+}
+
+/* --------------------------------------------------------------- Scroll UI (navbar, active link, back-to-top) */
+function initScrollUI() {
+    const nav = el('nav');
+    const toTop = el('to-top');
+    const links = [...document.querySelectorAll('#nav-menu a')];
+    const sections = links
+        .map((l) => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+
+    const onScroll = () => {
+        const y = window.scrollY;
+        nav.classList.toggle('scrolled', y > 40);
+        toTop.classList.toggle('visible', y > 480);
+
+        let current = '';
+        for (const s of sections) {
+            if (y >= s.offsetTop - 140) current = s.id;
+        }
+        links.forEach((l) => {
+            const on = l.getAttribute('href') === `#${current}`;
+            l.classList.toggle('active', on);
+            if (on) l.setAttribute('aria-current', 'true');
+            else l.removeAttribute('aria-current');
         });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* --------------------------------------------------------------- Reveal on scroll */
+function initReveal() {
+    const targets = document.querySelectorAll('.section__head, .about, .xp, .skillcat, .pcard, .educard, .cert, .channel');
+    targets.forEach((t) => t.classList.add('reveal'));
+
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        targets.forEach((t) => t.classList.add('in'));
+        return;
     }
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach((t) => io.observe(t));
 }

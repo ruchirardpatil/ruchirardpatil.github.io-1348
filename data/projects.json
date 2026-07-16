@@ -1,693 +1,88 @@
 {
-  "_instructions": "Add your projects.",
-  "sectionTitle": "Featured Work",
+  "_instructions": "Curated projects. Each card renders a generative cover derived from `seed` + `accent`. Add real repo/paper links only when they exist.",
+  "sectionTitle": "Selected work",
+  "sectionIndex": "04",
+  "note": "Publications and course/research projects. Boilerplate and forked repositories are intentionally left off.",
   "projects": [
     {
-      "title": "Product Search Android App",
-      "description": "Developed an Android application with Node.js backend. Integrated Ebay API for item searches based on user queries with a focus on a responsive user interface.",
-      "longDescription": "Developed an Android application with Node.js backend. Integrated Ebay API for item searches based on user queries with a focus on a responsive user interface.",
-      "category": "Mobile Development",
-      "technologies": [
-        "Android",
-        "Node.js",
-        "Ebay API"
-      ],
-      "icon": "fas fa-mobile-alt",
-      "color": "#FF6B6B",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "title": "Customer Churn Prediction",
+      "context": "Springer chapter",
+      "year": "2022",
+      "seed": 3,
+      "image": "assets/images/projects/churn.jpg",
+      "accent": "amber",
       "featured": true,
-      "github": "",
-      "demo": "",
-      "links": {
-        "github": "",
-        "demo": "",
-        "live": ""
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "description": "ML and neural-network models predicting customer churn in banking and telecom, reaching 87.05% and 81.93% accuracy respectively. Published as a book chapter with Springer.",
+      "tech": ["Python", "ANN", "Tableau"],
+      "links": [
+        { "label": "Read paper", "href": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23", "icon": "doc" }
+      ]
     },
     {
-      "title": "Website syncing Ebay data",
-      "description": "Organized a dynamic website mirroring Ebay's functionalities using Angular and Node.js. Integrated TypeScript API calls to retrieve user-specific data to display results in structured JSON.",
-      "longDescription": "Organized a dynamic website mirroring Ebay's functionalities using Angular and Node.js. Integrated TypeScript API calls to retrieve user-specific data to display results in structured JSON.",
-      "category": "Backend Development",
-      "technologies": [
-        "Angular",
-        "Node.js",
-        "TypeScript API"
-      ],
-      "icon": "fas fa-server",
-      "color": "#4ECDC4",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "",
-      "demo": "",
-      "links": {
-        "github": "",
-        "demo": "",
-        "live": ""
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "title": "Cloud Computing Security Survey",
+      "context": "IEEE paper",
+      "year": "2022",
+      "seed": 7,
+      "image": "assets/images/projects/cloud.jpg",
+      "accent": "cyan",
+      "featured": true,
+      "description": "A survey of security threats across cloud service models (SaaS / PaaS / IaaS / BaaS) and their mitigations, published and indexed on IEEE Xplore.",
+      "tech": ["Cloud", "Security", "SaaS/PaaS/IaaS"],
+      "links": [
+        { "label": "Read paper", "href": "https://ieeexplore.ieee.org/document/9788148", "icon": "doc" }
+      ]
     },
     {
       "title": "Video Shot Detection",
-      "description": "Built a system for detecting scene changes in videos. Employed color comparison and audio analysis techniques through the Librosa library for accurate detection.",
-      "longDescription": "Built a system for detecting scene changes in videos. Employed color comparison and audio analysis techniques through the Librosa library for accurate detection.",
-      "category": "Backend Development",
-      "technologies": [
-        "Python",
-        "Librosa"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FFE66D",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "",
-      "demo": "",
-      "links": {
-        "github": "",
-        "demo": "",
-        "live": ""
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "context": "Research project",
+      "year": "2023",
+      "seed": 11,
+      "image": "assets/images/projects/video.jpg",
+      "accent": "amber",
+      "featured": true,
+      "description": "A scene-change detector for video that combines frame-level color comparison with audio analysis via Librosa to find shot boundaries more reliably than either signal alone.",
+      "tech": ["Python", "Librosa", "OpenCV"],
+      "links": []
     },
     {
-      "title": "E-commerce Trends",
-      "description": "Leveraged sentiment analysis and text mining on diverse brands to anticipate consumer preferences. Strategically implemented data mining algorithms, to refine product suggestions.",
-      "longDescription": "Leveraged sentiment analysis and text mining on diverse brands to anticipate consumer preferences. Strategically implemented data mining algorithms, to refine product suggestions.",
-      "category": "Software Development",
-      "technologies": [
-        "Matplotlib",
-        "IBM SPSS Modeler"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#A8DADC",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "title": "Product Search — Android",
+      "context": "Course project",
+      "year": "2023",
+      "seed": 2,
+      "image": "assets/images/projects/android.jpg",
+      "accent": "cyan",
       "featured": false,
-      "github": "",
-      "demo": "",
-      "links": {
-        "github": "",
-        "demo": "",
-        "live": ""
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "description": "An Android app with a Node.js backend that queries the eBay API and renders responsive product-search results.",
+      "tech": ["Android", "Node.js", "eBay API"],
+      "links": [
+        { "label": "Code", "href": "https://github.com/ruchirardpatil/Ebay-Using-Android", "icon": "github" }
+      ]
     },
     {
-      "title": "Springer Publication: Customer Churn Prediction",
-      "description": "Utilized Machine Learning and Neural Network models for effective customer churn prediction in the Banking and Telecom sectors with the highest accuracy of 87.05% and 81.93% respectively.",
-      "longDescription": "Utilized Machine Learning and Neural Network models for effective customer churn prediction in the Banking and Telecom sectors with the highest accuracy of 87.05% and 81.93% respectively.",
-      "category": "Backend Development",
-      "technologies": [
-        "Python",
-        "Tableau",
-        "ANN"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#B19CD9",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "title": "eBay Data Web App",
+      "context": "Course project",
+      "year": "2023",
+      "seed": 5,
+      "image": "assets/images/projects/ebay.jpg",
+      "accent": "amber",
       "featured": false,
-      "github": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23",
-      "demo": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23",
-      "links": {
-        "github": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23",
-        "demo": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23",
-        "live": "https://link.springer.com/chapter/10.1007/978-981-16-7389-4_23"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "description": "A dynamic Angular + Node.js web app that mirrors core eBay flows, wiring TypeScript API calls to render structured, user-specific results.",
+      "tech": ["Angular", "Node.js", "TypeScript"],
+      "links": [
+        { "label": "Code", "href": "https://github.com/ruchirardpatil/Ebay-Using-Angular", "icon": "github" }
+      ]
     },
     {
-      "title": "IEEE Publication: Cloud Computing Security Survey",
-      "description": "Organized a comprehensive survey addressing security threats in Cloud Computing Service Models, aiding in understanding and mitigation of potential risks.",
-      "longDescription": "Organized a comprehensive survey addressing security threats in Cloud Computing Service Models, aiding in understanding and mitigation of potential risks.",
-      "category": "Software Development",
-      "technologies": [
-        "AWS",
-        "GCP",
-        "SaaS",
-        "PaaS",
-        "IaaS",
-        "BaaS"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FF8B94",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
+      "title": "E-commerce Trend Mining",
+      "context": "Data project",
+      "year": "2021",
+      "seed": 9,
+      "image": "assets/images/projects/trends.jpg",
+      "accent": "cyan",
       "featured": false,
-      "github": "https://ieeexplore.ieee.org/document/9788148",
-      "demo": "https://ieeexplore.ieee.org/document/9788148",
-      "links": {
-        "github": "https://ieeexplore.ieee.org/document/9788148",
-        "demo": "https://ieeexplore.ieee.org/document/9788148",
-        "live": "https://ieeexplore.ieee.org/document/9788148"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "nestjs-rest-sample",
-      "description": "Hands-on learning experience with modern frameworks",
-      "longDescription": "Hands-on learning experience with modern frameworks",
-      "category": "Software Development",
-      "technologies": [
-        "TypeScript",
-        "Dockerfile",
-        "JavaScript"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FF6B6B",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/nestjs-rest-sample",
-      "demo": "https://github.com/ruchirardpatil/nestjs-rest-sample",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/nestjs-rest-sample",
-        "demo": "https://github.com/ruchirardpatil/nestjs-rest-sample",
-        "live": "https://github.com/ruchirardpatil/nestjs-rest-sample"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "fx-fotos",
-      "description": "Comprehensive project exploring software design patterns",
-      "longDescription": "Comprehensive project exploring software design patterns",
-      "category": "Software Development",
-      "technologies": [
-        "TypeScript",
-        "JavaScript",
-        "Ruby",
-        "Shell",
-        "Objective-C",
-        "Kotlin",
-        "Java",
-        "Starlark",
-        "Objective-C++",
-        "Swift",
-        "C"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#4ECDC4",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/fx-fotos",
-      "demo": "https://github.com/ruchirardpatil/fx-fotos",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/fx-fotos",
-        "demo": "https://github.com/ruchirardpatil/fx-fotos",
-        "live": "https://github.com/ruchirardpatil/fx-fotos"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "express-graphql-boilerplate",
-      "description": "Practice repository for exploring advanced features",
-      "longDescription": "Practice repository for exploring advanced features",
-      "category": "Software Development",
-      "technologies": [
-        "JavaScript"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FFE66D",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/express-graphql-boilerplate",
-      "demo": "https://github.com/ruchirardpatil/express-graphql-boilerplate",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/express-graphql-boilerplate",
-        "demo": "https://github.com/ruchirardpatil/express-graphql-boilerplate",
-        "live": "https://github.com/ruchirardpatil/express-graphql-boilerplate"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "mern-chat-app",
-      "description": "Modern web application demonstrating clean code principles",
-      "longDescription": "Modern web application demonstrating clean code principles",
-      "category": "Data Science",
-      "technologies": [
-        "TypeScript",
-        "JavaScript",
-        "CSS",
-        "Dockerfile",
-        "HTML"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#A8DADC",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/mern-chat-app",
-      "demo": "https://github.com/ruchirardpatil/mern-chat-app",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/mern-chat-app",
-        "demo": "https://github.com/ruchirardpatil/mern-chat-app",
-        "live": "https://github.com/ruchirardpatil/mern-chat-app"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "mern-ecommerce-rajat",
-      "description": "Educational project for mastering software architecture",
-      "longDescription": "Educational project for mastering software architecture",
-      "category": "Data Science",
-      "technologies": [
-        "JavaScript",
-        "CSS",
-        "HTML",
-        "Procfile"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#B19CD9",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/mern-ecommerce-rajat",
-      "demo": "https://github.com/ruchirardpatil/mern-ecommerce-rajat",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/mern-ecommerce-rajat",
-        "demo": "https://github.com/ruchirardpatil/mern-ecommerce-rajat",
-        "live": "https://github.com/ruchirardpatil/mern-ecommerce-rajat"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "socialecho",
-      "description": "Personal development project using industry best practices",
-      "longDescription": "Personal development project using industry best practices",
-      "category": "Backend Development",
-      "technologies": [
-        "JavaScript",
-        "CSS",
-        "Python",
-        "Shell",
-        "HTML",
-        "Dockerfile"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#FF8B94",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/socialecho",
-      "demo": "https://github.com/ruchirardpatil/socialecho",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/socialecho",
-        "demo": "https://github.com/ruchirardpatil/socialecho",
-        "live": "https://github.com/ruchirardpatil/socialecho"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "bookstoreapp-distributed-application",
-      "description": "Personal development project using industry best practices",
-      "longDescription": "Personal development project using industry best practices",
-      "category": "Data Science",
-      "technologies": [
-        "Java",
-        "JavaScript",
-        "Dockerfile",
-        "HTML",
-        "CSS"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#FF6B6B",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/bookstoreapp-distributed-application",
-      "demo": "https://github.com/ruchirardpatil/bookstoreapp-distributed-application",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/bookstoreapp-distributed-application",
-        "demo": "https://github.com/ruchirardpatil/bookstoreapp-distributed-application",
-        "live": "https://github.com/ruchirardpatil/bookstoreapp-distributed-application"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "golang-clean-web-api",
-      "description": "Full-featured application built as a learning exercise",
-      "longDescription": "Full-featured application built as a learning exercise",
-      "category": "Software Development",
-      "technologies": [
-        "Go",
-        "Shell",
-        "Dockerfile"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#4ECDC4",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/golang-clean-web-api",
-      "demo": "https://github.com/ruchirardpatil/golang-clean-web-api",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/golang-clean-web-api",
-        "demo": "https://github.com/ruchirardpatil/golang-clean-web-api",
-        "live": "https://github.com/ruchirardpatil/golang-clean-web-api"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "fastapi-realworld-example-app",
-      "description": "Portfolio project showcasing development capabilities",
-      "longDescription": "Portfolio project showcasing development capabilities",
-      "category": "Backend Development",
-      "technologies": [
-        "Python",
-        "Shell",
-        "Mako",
-        "Dockerfile"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FFE66D",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/fastapi-realworld-example-app",
-      "demo": "https://github.com/ruchirardpatil/fastapi-realworld-example-app",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/fastapi-realworld-example-app",
-        "demo": "https://github.com/ruchirardpatil/fastapi-realworld-example-app",
-        "live": "https://github.com/ruchirardpatil/fastapi-realworld-example-app"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "spring-boot-microservice-best-practices",
-      "description": "Full-featured application built as a learning exercise",
-      "longDescription": "Full-featured application built as a learning exercise",
-      "category": "Software Development",
-      "technologies": [
-        "XSLT",
-        "Java",
-        "Shell",
-        "Dockerfile",
-        "Makefile",
-        "Mustache",
-        "Gherkin",
-        "JavaScript"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#A8DADC",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/spring-boot-microservice-best-practices",
-      "demo": "https://github.com/ruchirardpatil/spring-boot-microservice-best-practices",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/spring-boot-microservice-best-practices",
-        "demo": "https://github.com/ruchirardpatil/spring-boot-microservice-best-practices",
-        "live": "https://github.com/ruchirardpatil/spring-boot-microservice-best-practices"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "fest-saas-boilerplate",
-      "description": "Personal development project using industry best practices",
-      "longDescription": "Personal development project using industry best practices",
-      "category": "Software Development",
-      "technologies": [
-        "TypeScript",
-        "CSS",
-        "JavaScript"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#B19CD9",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/fest-saas-boilerplate",
-      "demo": "https://github.com/ruchirardpatil/fest-saas-boilerplate",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/fest-saas-boilerplate",
-        "demo": "https://github.com/ruchirardpatil/fest-saas-boilerplate",
-        "live": "https://github.com/ruchirardpatil/fest-saas-boilerplate"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "ruchirardpatil.github.io",
-      "description": "GitHub repository: ruchirardpatil.github.io",
-      "longDescription": "GitHub repository: ruchirardpatil.github.io",
-      "category": "Data Science",
-      "technologies": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#FF8B94",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/ruchirardpatil.github.io",
-      "demo": "https://github.com/ruchirardpatil/ruchirardpatil.github.io",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/ruchirardpatil.github.io",
-        "demo": "https://github.com/ruchirardpatil/ruchirardpatil.github.io",
-        "live": "https://github.com/ruchirardpatil/ruchirardpatil.github.io"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "Operating-Systems",
-      "description": "GitHub repository: Operating-Systems",
-      "longDescription": "GitHub repository: Operating-Systems",
-      "category": "Software Development",
-      "technologies": [
-        "C",
-        "C++",
-        "Shell"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FF6B6B",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/Operating-Systems",
-      "demo": "https://github.com/ruchirardpatil/Operating-Systems",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/Operating-Systems",
-        "demo": "https://github.com/ruchirardpatil/Operating-Systems",
-        "live": "https://github.com/ruchirardpatil/Operating-Systems"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "DSCI-551-Project",
-      "description": "GitHub repository: DSCI-551-Project",
-      "longDescription": "GitHub repository: DSCI-551-Project",
-      "category": "Backend Development",
-      "technologies": [
-        "Python",
-        "HTML"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#4ECDC4",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/DSCI-551-Project",
-      "demo": "https://github.com/ruchirardpatil/DSCI-551-Project",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/DSCI-551-Project",
-        "demo": "https://github.com/ruchirardpatil/DSCI-551-Project",
-        "live": "https://github.com/ruchirardpatil/DSCI-551-Project"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "final-project-576-master",
-      "description": "GitHub repository: final-project-576-master",
-      "longDescription": "GitHub repository: final-project-576-master",
-      "category": "Backend Development",
-      "technologies": [
-        "Java",
-        "Python"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FFE66D",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/final-project-576-master",
-      "demo": "https://github.com/ruchirardpatil/final-project-576-master",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/final-project-576-master",
-        "demo": "https://github.com/ruchirardpatil/final-project-576-master",
-        "live": "https://github.com/ruchirardpatil/final-project-576-master"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "video-query-system-master",
-      "description": "GitHub repository: video-query-system-master",
-      "longDescription": "GitHub repository: video-query-system-master",
-      "category": "Backend Development",
-      "technologies": [
-        "Java",
-        "Python"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#A8DADC",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/video-query-system-master",
-      "demo": "https://github.com/ruchirardpatil/video-query-system-master",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/video-query-system-master",
-        "demo": "https://github.com/ruchirardpatil/video-query-system-master",
-        "live": "https://github.com/ruchirardpatil/video-query-system-master"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "Ebay-Using-Android",
-      "description": "GitHub repository: Ebay-Using-Android",
-      "longDescription": "GitHub repository: Ebay-Using-Android",
-      "category": "Software Development",
-      "technologies": [
-        "Java"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#B19CD9",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/Ebay-Using-Android",
-      "demo": "https://github.com/ruchirardpatil/Ebay-Using-Android",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/Ebay-Using-Android",
-        "demo": "https://github.com/ruchirardpatil/Ebay-Using-Android",
-        "live": "https://github.com/ruchirardpatil/Ebay-Using-Android"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "Ebay-Using-Angular",
-      "description": "GitHub repository: Ebay-Using-Angular",
-      "longDescription": "GitHub repository: Ebay-Using-Angular",
-      "category": "Software Development",
-      "technologies": [
-        "JavaScript"
-      ],
-      "icon": "fas fa-project-diagram",
-      "color": "#FF8B94",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/Ebay-Using-Angular",
-      "demo": "https://github.com/ruchirardpatil/Ebay-Using-Angular",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/Ebay-Using-Angular",
-        "demo": "https://github.com/ruchirardpatil/Ebay-Using-Angular",
-        "live": "https://github.com/ruchirardpatil/Ebay-Using-Angular"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "Ebay-Using-Flask",
-      "description": "GitHub repository: Ebay-Using-Flask",
-      "longDescription": "GitHub repository: Ebay-Using-Flask",
-      "category": "Backend Development",
-      "technologies": [
-        "JavaScript",
-        "CSS",
-        "Python",
-        "HTML"
-      ],
-      "icon": "fas fa-brain",
-      "color": "#FF6B6B",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/Ebay-Using-Flask",
-      "demo": "https://github.com/ruchirardpatil/Ebay-Using-Flask",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/Ebay-Using-Flask",
-        "demo": "https://github.com/ruchirardpatil/Ebay-Using-Flask",
-        "live": "https://github.com/ruchirardpatil/Ebay-Using-Flask"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
-    },
-    {
-      "title": "Microprocessor-Microcontroller",
-      "description": "GitHub repository: Microprocessor-Microcontroller",
-      "longDescription": "GitHub repository: Microprocessor-Microcontroller",
-      "category": "Development",
-      "technologies": [],
-      "icon": "fas fa-project-diagram",
-      "color": "#4ECDC4",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&q=80&fit=crop",
-      "featured": false,
-      "github": "https://github.com/ruchirardpatil/Microprocessor-Microcontroller",
-      "demo": "https://github.com/ruchirardpatil/Microprocessor-Microcontroller",
-      "links": {
-        "github": "https://github.com/ruchirardpatil/Microprocessor-Microcontroller",
-        "demo": "https://github.com/ruchirardpatil/Microprocessor-Microcontroller",
-        "live": "https://github.com/ruchirardpatil/Microprocessor-Microcontroller"
-      },
-      "stats": {
-        "status": "Completed",
-        "year": "2026"
-      }
+      "description": "Sentiment analysis and text mining across brands to anticipate consumer preferences, feeding data-mining models that refine product recommendations.",
+      "tech": ["SPSS Modeler", "Text mining", "Matplotlib"],
+      "links": []
     }
   ]
 }
